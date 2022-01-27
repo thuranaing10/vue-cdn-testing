@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Introduction</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app1">
+	<h1>{{greet('Afternoon')}}</h1>
+	<p>Name: {{name}}</p>
+	<p>Job: {{job}}</p>
+	<a v-bind:href="website">The Net Ninja</a>
+	<input type="text" v-bind:value="name" name="">
+	<p v-html="websiteTag"></p>
+</div>
+<script type="text/javascript">
+	new Vue({
+		el:'#app1',
+		data:{
+			name:'Thura Naing',
+			job:'Ninja',
+			website:'http://www.google.com',
+			websiteTag:'<a href="http://www.google.com">Google</a>'
+		},
+		methods:{
+			greet:function(time){
+				return 'Good '+ time +' '+ this.name;
+			}
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insert And Delete</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div id="app" class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h1>Add Student</h1>
+			<div class="form-group">
+				<label for="name"></label>
+				<input type="text" id="name" class="form-control" placeholder="Student Name" v-model="newStudent.name">
+			</div>
+			<div class="form-group">
+				<label for="address">Address</label>
+				<textarea name="address" cols="30" rows="5" id="address" class="form-control" placeholder="Student Address" v-model="newStudent.address">
+				</textarea>
+			</div>
+			<button class="btn btn-success" v-on:click="addStudent">Add</button>
+ 		</div>
+ 		<div class="col-md-8">
+ 			<h1>All Students</h1>
+ 			<table class="table table-striped">
+ 				<thead>
+ 					<tr>
+ 						<td>Name</td>
+ 						<td>Address</td>
+ 						<td>Action</td>
+ 					</tr>
+ 				</thead>
+ 				<tbody>
+ 					<template v-if="students.length > 0">
+ 					<tr v-for="student in students">
+ 						<td>{{ student.name }}</td>
+ 						<td>{{ student.address }}</td>
+ 						<td><button type="button" class="btn btn-danger" v-on:click="removeStudent(student.index)">X</button></td>
+ 					</tr>
+ 					</template>
+ 				</tbody>
+ 			</table>
+ 		</div>
+	</div>
+	<br>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+			<pre>{{ $data | json }}</pre>
+		</div>
+	</div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			newStudent:{name:'',address:''},
+			students:[]
+		},
+		methods:{
+			addStudent:function(){
+				var name = this.newStudent.name.trim();
+				var addr = this.newStudent.address.trim();
+				if (name && addr) {
+					this.students.push({name:name,address:addr});
+					this.newStudent = {name:'',address:''};
+					$("#name").focus();
+				}
+			},
+			removeStudent:function(index){
+				this.students.splice(index,1);
+			}
+		}
+	});
+</script>
+</body>
+</html>

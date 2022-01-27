@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Instance Lifecycle</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="app" class="container">
+		<h1>{{ test }}</h1>
+		<input type="text" v-model="test" name="">
+		<h2 v-show="showMe">Show Me</h2>
+		<br>
+		<br>
+		<button v-on:click="removeVue" class="btn btn-success">Destroy Vue</button>
+		<pre>{{ $data | json }}</pre>
+	</div>
+
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			test:45,
+			showMe:true
+		},
+		methods:{
+			removeVue:function(){
+				this.$destroy();
+			},
+			methodTest:function(){
+				return "Method Test";
+			}
+		},
+		init: function(){
+			/* 
+				no data
+				no method
+				no $el
+			*/
+			console.log("Vue init! I can't access data "+ this.test);
+			console.log("I can't access method :" + this.methodTest());
+		},
+		created:function(){
+			/* 
+				data ok
+				method ok
+				no $el
+			*/
+			console.log("Vue created! I can access data "+ this.test);
+			console.log("I can access method now :" + this.methodTest());
+			console.log("$el is not ready yet "+this.$el);
+		},
+		compiled: function(){
+			/* 
+				data ok
+				method ok
+				$el ok
+			*/
+			console.log("Vue compiled EL "+ this.$el);
+			console.log("$el is ready! However $el is not gauranteed to have been inserted into the document yet.");
+		},
+		ready:function(){
+			/* 
+				data ok
+				method ok
+				$el ok
+				already inserted into document
+			*/
+			console.log("Vue is ready now!");
+		},
+		destroyed:function(){
+			console.log("Vue is destroyed");
+		}
+
+	});
+</script>
+</html>

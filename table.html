@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Basic</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+<body>
+	<div id="app">
+		<h1>{{name}}</h1>
+		<h1>{{address}}</h1>
+		<input type="text" v-model="name" name="">
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<td>ID</td>
+				<td>Name</td>
+				<td>Address</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr v-for="student in students">
+				<td>{{student.id}}</td>
+				<td>{{student.name}}</td>
+				<td>{{student.address}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<pre>{{students | json}}</pre>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				name:'Thura Naing',
+				address:'Magway',
+				students:[
+					{id : 1, name : "Aung Aung", address : "Hledan"},
+					{id : 2, name : "Hla Hla ", address : "Mandalay"}
+				]
+			}
+		});
+	</script>
+
+</body>
+</html>

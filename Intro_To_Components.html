@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intro to components</title>
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<h1>Components</h1>
+	<div id="app1">
+		<h1>Vue App One</h1>
+		<greeting></greeting>
+	</div>
+	<div id="app2">
+		<h1>Vue App Two</h1>
+		<greeting></greeting>
+	</div>
+	<script type="text/javascript">
+		Vue.component('greeting',{
+			template:'<p>Hey there,I am {{name}}<button v-on:click="changeName">Change Name</button></p>',
+			data:function(){
+				return{
+					name:'Yoshi'
+				}
+			},
+			methods:{
+				changeName:function(){
+					this.name = "Thura"
+				}
+			}
+		});
+		var vm1 = new Vue({
+			el:'#app1',
+			data:{
+
+			},
+			methods:{
+
+			},
+			computed:{
+
+			}
+		});
+		var vm2 = new Vue({
+			el:'#app2',
+			data:{
+
+			},
+			methods:{
+
+			},
+			computed:{
+
+			}
+		});
+	</script>
+</body>
+</html>

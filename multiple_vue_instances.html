@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multiple Vue Instances</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<h1>Multiple Vue Instances</h1>
+	<div id="app1">
+		<h2>{{title}}</h2>
+		<p>{{greet}}</p>
+	</div>
+	<div id="app2">
+		<h2>{{title}}</h2>
+		<p>{{greet}}</p>
+		<button v-on:click="changeTitle">Change App One Title</button>
+	</div>
+	<script type="text/javascript">
+		var vm1 = new Vue({
+			el:"#app1",
+			data:{
+				title:'Vue App One'
+			},
+			methods:{
+
+			},
+			computed:{
+				greet:function(){
+					return "Hello from app one";
+				}
+			}
+		});
+		var vm2 = new Vue({
+			el:"#app2",
+			data:{
+				title:'Vue App Two'
+			},
+			methods:{
+				changeTitle:function(){
+					vm1.title = "Title changed";
+				}
+			},
+			computed:{
+				greet:function(){
+					return "Hello,This is app 2 speaking to ya";
+				}
+			}
+		});
+		vm2.title = "Changed form outside";
+	</script>
+</body>
+</html>

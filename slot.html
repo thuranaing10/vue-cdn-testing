@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Slot</title>
+</head>
+<body>
+	<div id="app">
+		<post>
+			<template v-slot:title>
+				Biology
+			</template>
+			<template v-slot:content>
+				Biology is the study of living things.
+			</template>
+		</post>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script>
+
+		Vue.component('post',{
+			template: `
+			<div>
+				<h1><slot name="title">Post Title</slot></h1>
+				<p><slot name="content">Post Content</slot></p>
+			</div>
+			`
+		})
+
+
+		new Vue({
+			el: "#app"
+		})
+	</script>
+
+</body>
+</html>

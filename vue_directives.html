@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Directives</title>
+	
+</head>
+<body>
+	<div id="app">
+		<p v-if="fruit == 'apple' ">Apple</p>
+		<p v-else-if="fruit == 'orange' ">Orange</p>
+		<p v-else>No fruit</p>
+		<p v-show="isShow">Show</p>
+		<p v-text="text"></p>
+		<p v-html="text"></p>
+		<input type="text" v-model="inputText" name="">
+		<p>{{ inputText }}</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			'el':"#app",
+			data:function(){
+				return{
+					fruit:"banana",
+					isShow:true,
+					text:"<h1>Hello Vue</h1>",
+					inputText:"Enter something"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Attribute Binding</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <img :src="image">
+        </div>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    image:'./img/bag.png'
+                }
+            });
+        </script>
+    </body>
+</html>

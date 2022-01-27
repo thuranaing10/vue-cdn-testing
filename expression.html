@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Expression</title>
+</head>
+<body>
+	<div id="app">
+		<p>I am {{ name }}.I am {{ age }} years old.</p>
+		<p>{{ `I am ${name}.I am ${age} years old.` }}</p>
+		<p>{{ isLike? "Like" : "no-like" }}</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			'el':"#app",
+			data:function(){
+				return{
+					name:"Thura Naing",
+					age:"22",
+					isLike:true
+				}
+			}
+		});
+	</script>
+</body>
+</html>

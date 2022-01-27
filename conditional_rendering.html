@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Conditional Rendering</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-if="instock > 10">In Stock</p>
+            <p v-else-if="instock <= 10 && instock > 0">Almost Sold Out</p>
+            <p v-else>Out of Stock</p>
+            <br>
+            <p v-show="instock">In Stock</p>
+        </div>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    instock:1,
+                }
+            });
+        </script>
+    </body>
+</html>

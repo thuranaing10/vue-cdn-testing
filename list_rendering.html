@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Attribute Binding</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="detail in details"> {{ detail }} </li>
+            </ul>
+            
+            <table border="1">
+                <tr>
+                    <td>No</td>
+                    <td>Name</td>
+                    <td>Age</td>
+                </tr>
+                <tr v-for="student in students" :key="student.id">
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    details:['apple','orange','pineapple'],
+                    students:[
+                        {
+                            id:1,
+                            name:"mg mg",
+                            age:10
+                        },
+                        {
+                            id:2,
+                            name:"aung aung",
+                            age:'12'
+                        }
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>

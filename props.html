@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Props</title>
+</head>
+<body>
+	<div id="app">
+
+		<create @create="insertPost"></create>
+		<post v-for="(post,index) in posts" :title="post.title" :content="post.content" :key="index"></post>
+
+	</div>
+
+	<div id="app2">
+		<create></create>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script>
+		Vue.config.devtools = true;
+		
+		var post = {
+			template: `
+
+				<div>
+					<h1>{{ title }}</h1>
+					<p>{{ content }}</p>
+				</div>
+
+			`,
+			props: {
+				title: {
+					type: String,
+					default: "This is default title."
+				},
+				content: String
+			}
+		}
+
+		var create = {
+			template: `
+				<div>
+					<input ref="title" v-model="title" type="text" placeholder="Enter post title"><br><br>
+					<input v-model="content" type="text" placeholder="Enter post content"><br><br>
+					<button @click="createPost">Create</button>
+
+				</div>
+			`,
+			data() {
+				return {
+					title:"",
+					content:""
+				}
+			},
+			methods: {
+				createPost() {
+					this.$emit('create',{
+						title: this.title,
+						content: this.content
+					})
+					this.title = '';
+					this.content = '';
+
+					this.$refs.title.focus();
+				}
+			}
+		}
+
+		new Vue({
+			el:"#app",
+			components: {
+				post,create
+			},
+			data: {
+				posts: [
+					{ title: "Title one",content:"Content one" },
+					{ title: "Title two",content:"Content two" },
+					{ title: "Title three",content:"Content three" }
+				]
+			},
+			methods: {
+				insertPost(post) {
+					if (post.title && post.content) {
+						this.posts.push(post);
+					}
+					
+				}
+			}
+		})
+
+		new Vue({
+			el: "#app2",
+			components: {
+				create
+			}
+		})
+	</script>
+</body>
+</html>

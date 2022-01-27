@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue component</title>
+</head>
+<body>
+	<div id="app">
+		<vote inline-template>
+			<div>
+				<h1>Result: {{ count }}</h1>
+				<button @click="incrementCount">Vote</button>
+			</div>
+		</vote>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<!-- <script type="text/x-template" id="vote-template">
+		
+	</script> -->
+
+	<script>
+
+		Vue.component('vote',{
+			template: `#vote-template`,
+			data() {
+				return {
+					count: 0
+				}
+			},
+			methods: {
+				incrementCount() {
+					this.count++;
+				}
+			}
+		})
+
+		new Vue({
+			el:"#app",
+		})
+	</script>
+</body>
+</html>

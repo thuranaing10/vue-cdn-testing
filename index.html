@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="app" class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>{{message}}</h1>
+				<h2 v-cloak v-text="message"></h2>
+
+				<h2 v-cloak>{{ dog }}</h2>
+				<input type="text" v-model="dog" name="">
+				<h2 v-text="cat"></h2>
+				<input type="text" v-model="cat" name="">
+				<ul>
+					<li v-for="id in ids" id="item - {{id}}">Item - {{ id }}</li>
+				</ul>
+				<p>{{ number + 20 }}</p>
+				<h2>{{ ok? 'YES':'NO' }}</h2>
+				<p>{{ message | capitalize }}</p>
+			</div>
+		</div>
+	</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script type="text/javascript">
+	
+	new Vue({
+		el:"#app",
+		data:{
+			message:"hello world!",
+			dog:"Aung Net",
+			cat:"Shwe Wah",
+			ids:[1,2,3,4,5,6],
+			number:45,
+			ok:true
+		}
+	});
+</script>
+</body>
+</html>

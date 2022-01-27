@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Event Handling</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="item++">Add Item</button>
+            <button v-on:click="orderItem" :disabled="true">Add to cart</button>
+            <div class="cart">
+                Cart ({{ item }})
+            </div>
+            <div>
+                <div v-for="(color,index) in colors" :key="index"
+                    @mouseover="updateColor(color.image)" :style="{color:color.item}">{{color.item}}
+                </div>
+                <img v-bind:src="image">
+            </div>
+        </div>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    item:0,
+                    text_color:'yellow',
+                    image:'./img/bag.png',
+                    colors:[
+                        {item:'red',image:'./img/bag.png'},
+                        {item:'green',image:'./img/boy.png'}
+                    ],
+                },
+                methods:{
+                    orderItem: function() {
+                        this.item++;
+                    },
+                    updateColor: function(image) {
+                        this.image = image;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

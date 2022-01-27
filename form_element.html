@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Form Element</title>
+</head>
+<body>
+	<div id="app">
+		<input type="checkbox" value="A" v-model="check">
+		<input type="checkbox" value="B" v-model="check">
+		<input type="checkbox" value="C" v-model="check">
+		{{ check }}
+		<br><br>
+		<input type="radio" value="Male" v-model="radio">
+		<input type="radio" value="Female" v-model="radio">
+		{{ radio }}
+
+		<br><br>
+		<select v-model="select" multiple>
+			<option>Apple</option>
+			<option>Orange</option>
+			<option>Mango</option>
+		</select>
+		{{ select }}
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data() {
+				return {
+					check: [],
+					radio: "",
+					select: []
+				}
+			}
+		})
+	</script>
+</body>
+</html>

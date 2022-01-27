@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Basic</title>
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="app">
+		<h1>Computed Properties</h1>
+		<button v-on:click="a++">Add to A</button>
+		<button v-on:click="b++">Add to B</button>
+		<p>A - {{ a }}</p>
+		<p>B - {{ b }}</p>
+		<p>Age + A - {{ addToA }}</p>
+		<p>Age + B - {{ addToB }}</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				age:20,
+				a:0,
+				b:0
+			},
+			methods:{
+				/*addToA:function(){
+					return this.age + this.a;
+				},
+				addToB:function(){
+					return this.age + this.b;
+				}*/
+			},
+			computed:{
+				addToA:function(){
+					return this.age + this.a;
+				},
+				addToB:function(){
+					return this.age + this.b;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

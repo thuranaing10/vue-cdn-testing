@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue Basic</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Looping through Lists</h1>
+		<ul>
+			<li v-for="(character,index) in characters">{{index}} . {{character}}</li>
+		</ul>
+		<ul>
+			<li v-for="(ninja,index) in ninjas">{{index}} . {{ninja.name}} - {{ninja.age}}</li>
+		</ul>
+		<template v-for="(ninja,index) in ninjas">
+			<h3>{{index}} . {{ninja.name}}</h3>
+			<p>{{ninja.age}}</p>
+		</template>
+		<template v-for="ninja in ninjas">
+			<div v-for="(val,key) in ninja">
+				<p>{{key}} - {{val}}</p>
+			</div>
+		</template>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				characters:['Mario','Chrome','Browser','Ninja'],
+				ninjas:[
+					{name:'Ryu',age:25},
+					{name:'Thura',age:30},
+					{name:'Naing',age:15},
+					{name:'Aung',age:20}
+				]
+			},
+			methods:{
+
+			},
+			computed:{
+
+			}
+		});
+	</script>
+</body>
+</html>

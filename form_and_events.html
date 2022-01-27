@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form and Events</title>
+</head>
+<body>
+	<div id="app">
+		<h4>Checkbox</h4>
+		<input type="checkbox" value="A" v-model="char">
+		<input type="checkbox" value="B" v-model="char">
+		<input type="checkbox" value="C" v-model="char">
+		{{ char }}
+
+		<br>
+
+		<h4>Radio</h4>
+		<input type="radio" value="Male" v-model="gender">
+		<input type="radio" value="Female" v-model="gender">
+		{{ gender }}
+
+		<br>
+
+		<!-- single selectbox -->
+		<h4>Selectbox</h4>
+		<select v-model="select">
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		{{ select }}
+
+		<br>
+
+		<!-- multiple selectbox -->
+		<h4>Multiple Selectbox</h4>
+		<select v-model="multipleSelect" multiple="multiple">
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		{{ multipleSelect }}
+
+		<br>
+
+		<button @click.once="doAlert()">Alert</button>
+
+		<br>
+
+		<form @submit.prevent="doAlert">
+			<input type="text" v-model="name">{{ name }}
+			<button>Submit</button>
+		</form>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			'el':"#app",
+			data(){
+				return{
+					char:[],
+					gender:"",
+					select:"",
+					multipleSelect:[],
+					name:"trn"
+				}
+			},
+			methods:{
+				doAlert(){
+					console.log('alert');
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>
